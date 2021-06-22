@@ -53,7 +53,7 @@ describe('demo routes', () => {
     expect(res.body).toEqual(text);
   });
 
-  it('updates a value in the db and sends a text', async () => {
+  it.only('updates a value in the db and sends a text', async () => {
 
     const text = await Text.insert({
       name: 'Marisol',
@@ -66,7 +66,8 @@ describe('demo routes', () => {
     const updatedText = {
       id: 1,
       name: 'Eleanor',
-      comic: expect.any(String)
+      comic: expect.any(String),
+      zip: 85001
     };
     
     const res = await request(app)

@@ -1,19 +1,21 @@
 # xkcd-Texter
 
-This app will get random xkcd comic image url, 
-save a name and url to database, 
-and text it to a number.
+## This app will receive a name and zip code and send an SMS text message. 
+### The text will include the local weather and a randomly generated xkcd comic.
+
+---
 
 CREATE
-	- set name
-	- image
+- set name
+- comic
 
 READ
-	- get comic by id
-	- get all comics
+- get text by id
+- get all texts
 
 UPDATE
-	- change name
+- change name
+- change zip
 
 DELETE
-	- delete row
+- delete text row

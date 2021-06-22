@@ -45,7 +45,9 @@ describe('demo routes', () => {
 
   it.only('finds an order by id via GET', async () => {
     const text = await Text.insert({
-      quantity: '15'
+      name: 'Marisol',
+      zip: 85001,
+      comic: ''
     });
     const res = await request(app).get(`/api/v1/texts/${text.id}`);
     expect(res.body).toEqual(text);

@@ -53,7 +53,7 @@ describe('demo routes', () => {
     expect(res.body).toEqual(text);
   });
 
-  it.only('updates a value in the db and sends a text', async () => {
+  it('updates a value in the db and sends a text', async () => {
 
     const text = await Text.insert({
       name: 'Marisol',

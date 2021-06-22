@@ -13,12 +13,15 @@ describe('demo routes', () => {
       .post('/api/v1/comics')
       .send({ 
         name: 'tis',
-        image: ' '
+        zip: 97213,
+        image: ''
       });
+    
     expect(res.body).toEqual({
       id: 1,
       name: 'tis',
-      image: expect.any(String)
+      image: expect.any(String),
+      zip: 97213
     });
   });
 

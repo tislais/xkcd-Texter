@@ -43,7 +43,7 @@ describe('demo routes', () => {
     expect(res.body).toEqual([textOne, textTwo]);
   });
 
-  it.only('finds an order by id via GET', async () => {
+  it('finds an order by id via GET', async () => {
     const text = await Text.insert({
       name: 'Marisol',
       zip: 85001,
@@ -51,6 +51,31 @@ describe('demo routes', () => {
     });
     const res = await request(app).get(`/api/v1/texts/${text.id}`);
     expect(res.body).toEqual(text);
+  });
+
+  it('updates a value in the db and sends a text', async () => {
+
+    const text = await Text.insert({
+      name: 'Marisol',
+      zip: 85001,
+      comic: ''
+    });
+
+    text.name = 'Eleanor';
+
+    const updatedText = {
+      id: 1,
+      name: 'Eleanor',
+      comic: expect.any(String)
+    };
+    
+    const res = await request(app)
+      .put(`/api/v1/texts/${text.id}`)
+      .send({
+        name: 'Eleanor'
+      });
+    
+    expect(res.body).toEqual(updatedText);
   });
 
 });

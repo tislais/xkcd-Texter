@@ -26,7 +26,7 @@ describe('demo routes', () => {
     });
   });
 
-  it.only('finds all texts via GET', async () => {
+  it('finds all texts via GET', async () => {
 
     const textOne = await Text.insert({ 
       name: 'Kaysar',
@@ -41,6 +41,14 @@ describe('demo routes', () => {
     const res = await request(app).get('/api/v1/texts');  
 
     expect(res.body).toEqual([textOne, textTwo]);
+  });
+
+  it.only('finds an order by id via GET', async () => {
+    const text = await Text.insert({
+      quantity: '15'
+    });
+    const res = await request(app).get(`/api/v1/texts/${text.id}`);
+    expect(res.body).toEqual(text);
   });
 
 });

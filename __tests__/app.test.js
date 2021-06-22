@@ -20,7 +20,7 @@ describe('demo routes', () => {
     
     expect(res.body).toEqual({
       id: 1,
-      name: 'tis',
+      name: 'Tis',
       comic: expect.any(String),
       zip: 97213
     });

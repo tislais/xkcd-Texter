@@ -10,17 +10,17 @@ describe('demo routes', () => {
 
   it('creates a item in our database with name and url and sends a text message', async () => {
     const res = await request(app)
-      .post('/api/v1/comics')
+      .post('/api/v1/texts')
       .send({ 
         name: 'tis',
         zip: 97213,
-        image: ''
+        comic: ''
       });
     
     expect(res.body).toEqual({
       id: 1,
       name: 'tis',
-      image: expect.any(String),
+      comic: expect.any(String),
       zip: 97213
     });
   });

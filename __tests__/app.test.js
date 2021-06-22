@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Text from '../lib/models/Text.js';
 
 describe('demo routes', () => {
   beforeEach(() => {
@@ -12,7 +13,7 @@ describe('demo routes', () => {
     const res = await request(app)
       .post('/api/v1/texts')
       .send({ 
-        name: 'tis',
+        name: 'Tis',
         zip: 97213,
         comic: ''
       });
@@ -23,6 +24,23 @@ describe('demo routes', () => {
       comic: expect.any(String),
       zip: 97213
     });
+  });
+
+  it.only('finds all texts via GET', async () => {
+
+    const textOne = await Text.insert({ 
+      name: 'Kaysar',
+      zip: 90210,
+      comic: ''
+    });
+    const textTwo = await Text.insert({ 
+      name: 'Janelle',
+      zip: 33101,
+      comic: ''
+    });
+    const res = await request(app).get('/api/v1/texts');  
+
+    expect(res.body).toEqual([textOne, textTwo]);
   });
 
 });

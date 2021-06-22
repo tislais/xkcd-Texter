@@ -79,5 +79,19 @@ describe('demo routes', () => {
     expect(res.body).toEqual(updatedText);
   });
 
+  it('it deletes an item from the database and sends a text', async () => {
+    
+    const text = await Text.insert({
+      name: 'Marisol',
+      zip: 85001,
+      comic: ''
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/texts/${text.id}`);
+    
+    expect(res.body).toEqual(text);
+  });
+
 });
 
